@@ -1,0 +1,27 @@
+name: Tiny # 主题名称
+description: Tiny is a simple, clean, and modern theme for NEXT. # 主题描述
+support_version: ">=1.5.3" # 最大支持的后端版本
+configs: # 主题配置
+  - title: "底部 GitHub 图标链接" # 配置标题
+    description: "输入 GitHub 图标链接" # 配置描述
+    type: "input" # 配置键入框类型，支持 input, textarea, select, checkbox, radio, switch
+    key: "footer_github_link" # 配置键名, 必须唯一
+    default: "https://github.com/wibus-wee" # 配置默认值
+
+  - title: "底部 邮件 图标"
+    description: "输入邮件图标链接"
+    type: "input"
+    key: "footer_email_icon"
+    default: "https://img.icons8.com/color/48/000000/gmail.png"
+
+  - title: "底部 备案号"
+    description: "输入备案号"
+    type: "input"
+    key: "footer_icp"
+    default: "输入备案号"
+
+  - title: "公开项目栏信息"
+    description: "输入公开项目栏信息"
+    type: "textarea"
+    key: "footer_open_source_info"
+    default: "输入公开项目栏信息，以json格式输入，输入格式请见文档"
