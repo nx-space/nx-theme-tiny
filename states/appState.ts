@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-07 21:55:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-07 21:59:04
+ * @LastEditTime: 2022-08-08 12:39:18
  * Coding With IU
  */
 
@@ -15,7 +15,7 @@ const appState = proxy({
     ip: "",
     userAgent: "",
   },
-  aggregate: {}
+  aggregate: {},
 })
 
 export default appState
