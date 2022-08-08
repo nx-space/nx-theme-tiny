@@ -3,6 +3,9 @@
 >
 > 一个简单、纯净、最小化的主题，适用于 NEXT
 
+![preview](https://user-images.githubusercontent.com/62133302/183421821-287735e2-6e9e-48b4-ba35-81981be30f78.jpg)
+
+
 
 ## License
 
