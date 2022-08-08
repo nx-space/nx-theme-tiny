@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 15:24:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 16:28:50
+ * @LastEditTime: 2022-08-08 17:15:48
  * Coding With IU
  */
 
@@ -11,7 +11,7 @@ import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { useSnapshot } from "valtio";
 import { BackTop } from "../../../components/widgets/BackTop";
-import Markdown from "../../../components/widgets/Markdown";
+import Markdown from "../../../components/Markdown";
 import appState from "../../../states/appState";
 import { apiClient } from "../../../utils/request.util";
 
@@ -92,7 +92,10 @@ const Post: NextPage = (props: any) => {
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
               <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">
-                <Markdown source={props.data.text} />
+                <Markdown 
+                  source={props.data.text}
+                  images={props.data.images}
+                />
               </div>
               <div id="comment"></div>
             </div>

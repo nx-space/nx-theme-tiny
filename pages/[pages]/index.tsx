@@ -8,7 +8,7 @@
  */
 
 import { GetServerSideProps, NextPage } from "next";
-import Markdown from "../../components/widgets/Markdown";
+import Markdown from "../../components/Markdown";
 import { apiClient } from "../../utils/request.util";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
