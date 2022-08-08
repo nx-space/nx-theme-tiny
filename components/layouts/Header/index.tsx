@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 12:28:09
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 16:16:18
+ * @LastEditTime: 2022-08-08 16:40:26
  * Coding With IU
  */
 
@@ -23,21 +23,23 @@ export const Header: FC<any> = () => {
   return (
     <header className="flex items-center justify-between py-10">
       <div>
-        <a target="_blank" rel="noopener noreferrer">
-          <div className="flex items-center justify-between">
-            <div className="hidden h-6 text-2xl font-semibold sm:block">
-              {aggregateSnapshot?.aggregatedData.sites?.title}
+        <Link href={"/"}>
+          <a>
+            <div className="flex items-center justify-between">
+              <div className="hidden h-6 text-2xl font-semibold sm:block">
+                {aggregateSnapshot?.aggregatedData.sites?.title}
+              </div>
             </div>
-          </div>
-        </a>
+          </a>
+        </Link>
       </div>
       <div className="flex items-center text-base leading-5">
         <div className="hidden sm:block">
           {
             aggregateSnapshot?.aggregatedData.page_meta?.map((item: any) => {
               return (
-                <Link href={item.slug}>
-                <a key={item.id} className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100" >{item.title}</a>
+                <Link href={`/${item.slug}`}>
+                  <a key={item.id} className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100" >{item.title}</a>
                 </Link>
               )
             })
@@ -55,7 +57,7 @@ export const Header: FC<any> = () => {
           <div className={clsx(
             isOpen ? "translate-x-0" : "translate-x-full",
             "fixed w-full h-full top-24 right-0 bg-gray-200 dark:bg-gray-800 opacity-95 z-10 transform ease-in-out duration-300"
-            )}>
+          )}>
 
             <button type="button" aria-label="toggle modal" className="fixed w-full h-full cursor-auto focus:outline-none">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="text-gray-900 dark:text-gray-100"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
