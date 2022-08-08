@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 15:24:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 17:15:48
+ * @LastEditTime: 2022-08-08 20:39:23
  * Coding With IU
  */
 
@@ -85,13 +85,16 @@ const Post: NextPage = (props: any) => {
                       <dd className="text-gray-900 dark:text-gray-100">
                         {aggregateSnapshot.aggregatedData.user.name}
                       </dd>
+                      <p className="text-gray-500 dark:text-gray-400">
+                      {aggregateSnapshot.aggregatedData.user.introduce}
+                    </p>
                     </dl>
                   </li>
                 </ul>
               </dd>
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
-              <div className="pt-10 pb-8 prose dark:prose-dark max-w-none">
+              <div className="pt-10 pb-8 prose dark:prose-invert max-w-none">
                 <Markdown 
                   source={props.data.text}
                   images={props.data.images}

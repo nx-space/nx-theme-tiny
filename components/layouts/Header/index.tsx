@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 12:28:09
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 16:40:26
+ * @LastEditTime: 2022-08-08 20:34:25
  * Coding With IU
  */
 
@@ -45,9 +45,9 @@ export const Header: FC<any> = () => {
             })
           }
         </div>
-        <button aria-label="Toggle Dark Mode" type="button" className="w-8 h-8 p-1 ml-1 mr-1 rounded sm:ml-4">
+        {/* <button aria-label="Toggle Dark Mode" type="button" className="w-8 h-8 p-1 ml-1 mr-1 rounded sm:ml-4">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="text-gray-900 dark:text-gray-100"> <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path></svg>
-        </button>
+        </button> */}
         <div className="sm:hidden">
           <button type="button" className="w-8 h-8 ml-1 mr-1 rounded" aria-label="Toggle Menu" onClick={() => {
             setIsOpen(!isOpen);

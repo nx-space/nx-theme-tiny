@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 16:01:35
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 18:16:26
+ * @LastEditTime: 2022-08-08 20:36:14
  * Coding With IU
  */
 
@@ -16,6 +16,7 @@ import images from '../../states/images.state'
 import { isClientSide } from '../../utils/ssr.util'
 import { CodeBlock } from './renderers/CodeBlock'
 import { Image } from './renderers/Image'
+import { PreBlock } from './renderers/PreBlock'
 export const Markdown = (props: { source: string, [key: string]: any }) => {
   props.images ? images.data = props.images : null
 
@@ -24,7 +25,7 @@ export const Markdown = (props: { source: string, [key: string]: any }) => {
   useEffect(() => {
     setComponents({
       'img': Image,
-      'pre': CodeBlock,
+      'pre': PreBlock,
       'code': CodeBlock,
     })
   }, [])

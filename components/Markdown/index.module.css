@@ -1,9 +1,9 @@
 .code-wrap {
   position: relative;
 
-  /* pre > code {
+  pre > code {
     background-color: var(--light-bg) !important;
-  } */
+  }
 }
 
 .copy-tip {

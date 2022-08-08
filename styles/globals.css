@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --tw-prose-pre-bg: 'rgb(29, 31, 33)' !important;
+}
+
 html,
 body {
   padding: 0;
@@ -24,7 +28,7 @@ a {
     color-scheme: dark;
   }
   body {
-    color: white;
+    color: #d4d4d4;
     background: black;
   }
 }
