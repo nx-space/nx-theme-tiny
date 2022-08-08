@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 15:24:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 20:39:23
+ * @LastEditTime: 2022-08-08 22:34:20
  * Coding With IU
  */
 
@@ -14,6 +14,7 @@ import { BackTop } from "../../../components/widgets/BackTop";
 import Markdown from "../../../components/Markdown";
 import appState from "../../../states/appState";
 import { apiClient } from "../../../utils/request.util";
+import { Comments } from "../../../components/widgets/Comments";
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -100,7 +101,13 @@ const Post: NextPage = (props: any) => {
                   images={props.data.images}
                 />
               </div>
-              <div id="comment"></div>
+              <div id="comment">
+                <Comments
+                  type="post"
+                  path={props.data.path}
+                  id={props.data.id}
+                  />
+              </div>
             </div>
             <footer>
               <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
