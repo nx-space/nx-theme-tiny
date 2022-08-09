@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 00:12:03
+ * @LastEditTime: 2022-08-09 11:25:18
  * Coding With IU
  */
 
@@ -15,6 +15,8 @@ import { apiClient } from "../../../utils/request.util";
 import { mailAvatar } from "../../../utils/mail.util";
 import { useMount } from "react-use";
 import Markdown from "../../Markdown";
+import { message } from "react-message-popup";
+import { isClientSide } from "../../../utils/ssr.util";
 
 interface ICommentsFC {
   // type 只能填写 post 或 page
@@ -23,9 +25,26 @@ interface ICommentsFC {
   id: String
 }
 
+interface IReply {
+  id: String
+  author: String
+  text: String
+  mail: String
+  url: String
+  reply: 0 | 1
+}
+
 export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
 
   const [list, setList] = useState<any>();
+  const [reply, setReply] = useState<IReply>({
+    id,
+    "author": "",
+    "text": "",
+    "mail": "",
+    "url": "",
+    "reply": 0
+  });
 
   const getComments = async () => {
     return await apiClient(`/comments/ref/${id}`).then(res => {
@@ -37,7 +56,69 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
 
   useMount(() => {
     getComments();
+    isClientSide() && setReply({
+      ...reply,
+      "author": (JSON.parse(localStorage.getItem('guest-message') || '{}')).author,
+      "mail": (JSON.parse(localStorage.getItem('guest-message') || '{}')).mail,
+      "url": (JSON.parse(localStorage.getItem('guest-message') || '{}')).url,
+    })
   })
+
+  const Children = ({ children }) => {
+    return (children.length) && (
+      <div className={clsx(styles.replyContainer)}>
+        <div className="relative">
+          <div className={clsx(styles.tlLine)} />
+          {
+            children.length && children.map((item: any, index: Number) => {
+              return (
+                <div className={clsx(styles.replyBox)}>
+                  <div className={clsx(styles.replyAuthorAvatar)}>
+                    <a href={item?.url} className={clsx(styles.authorAvatar)}>
+                      <img src={item.mail ? mailAvatar(item.mail) : "https://cravatar.cn/avatar/"} alt={item.author} width={30} height={30} />
+                    </a>
+                  </div>
+                  <div className={clsx(styles.headerBox)}>
+                    <div className={clsx(styles.replyHeader, styles.header)}>
+                      <div className={clsx(styles.author)}>
+                        <a rel="nofollow noopener noreferrer" target="_blank"
+                          href={item?.url} className="flex items-center">
+                          <span className="link-primary font-semibold">{item.author}</span>
+                        </a>
+                        <span className="link-secondary ml-2">
+                          <time className="whitespace-nowrap">
+                            {item.created.split('T')[0]}
+                          </time>
+                        </span>
+                      </div>
+                      <button className="flex" onClick={() => {
+                        setReply({
+                          ...reply,
+                          reply: 1,
+                          id: item.id
+                        })
+                        // 平滑移动到评论框
+                        const comment = document.querySelector(`#comment`)
+                        comment?.scrollIntoView({
+                          behavior: 'smooth'
+                        })
+                      }}>Reply</button>
+                    </div>
+                    <div className={clsx(styles.content)}>
+                      <Markdown
+                        source={item.text}
+                      />
+                    </div>
+                    <Children children={item.children} />
+                  </div>
+                </div>
+              )
+            })
+          }
+        </div>
+      </div>
+    ) || null
+  }
 
   return (
     <div className="pt-6 pb-6 text-center text-gray-700 dark:text-gray-300 ml-0">
@@ -48,9 +129,70 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
           </div>
         </div>
 
-        <form action="post" className={clsx(styles['form'])}>
+        <form action="post" className={clsx(styles['form'])} onSubmit={async (e) => {
+          e.preventDefault()
+          localStorage.setItem("guest-message", JSON.stringify({
+            "author": reply.author,
+            "mail": reply.mail,
+            "url": reply.url,
+          }))
+          // message.info(`/comments${reply.reply ? "/reply" : ""}/${reply.id}`)
+          await apiClient(`/comments${reply.reply ? "/reply" : ""}/${reply.id}`, {
+            method: "POST",
+            body: JSON.stringify(reply)
+          }).then(() => {
+            getComments();
+            message.success(`${reply.reply ? "回复" : "评论"} 成功`)
+            setReply({
+              ...reply,
+              text: "",
+            })
+          }).catch((err) => {
+            message.error(`${reply.reply ? "回复" : "评论"} 失败`)
+          })
+        }}>
           <div className={clsx(styles["boxMain"])}>
-            <textarea id="" placeholder="Comment here" className={clsx(styles["textarea"])}></textarea>
+            <div className="p-3 pb-4">
+              <input type="text" placeholder="Name" className="focus:outline-none" name="author"
+                value={reply.author as any}
+                onChange={(e) => {
+                  setReply({
+                    ...reply,
+                    author: e.target.value
+                  })
+                }}
+              />
+              <input type="text" placeholder="Mail" className="focus:outline-none"
+                name="mail"
+                value={reply.mail as any}
+                onChange={(e) => {
+                  setReply({
+                    ...reply,
+                    mail: e.target.value
+                  })
+                }}
+              />
+              <input type="text" placeholder="Url (optional)" className="focus:outline-none" style={{ width: "400px" }}
+                name="url"
+                value={reply.url as any}
+                onChange={(e) => {
+                  setReply({
+                    ...reply,
+                    url: e.target.value
+                  })
+                }}
+              />
+            </div>
+            <textarea id="" placeholder="Comment here" className={clsx(styles["textarea"])}
+              name="text"
+              value={reply.text as any}
+              onChange={(e) => {
+                setReply({
+                  ...reply,
+                  text: e.target.value
+                })
+              }}
+            ></textarea>
           </div>
           <div className={clsx(styles["submitBtn"])}>
             <Link href="https://guides.github.com/features/mastering-markdown/">
@@ -59,9 +201,32 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                 Styling with Markdown is supported
               </a>
             </Link>
-
             <div className={clsx(styles.submit)}>
-              <button type="submit" className={clsx(styles.submitInner)}>Submit Comments</button>
+
+              {
+                (reply.reply || reply.text) && (
+                  <button className={clsx(styles.submitInner)} type="button"
+                    style={{
+                      backgroundColor: "inherit",
+                      color: "inherit"
+                    }}
+                    onClick={() => {
+                      setReply({
+                        ...reply,
+                        reply: 0,
+                        id,
+                        text: "",
+                      })
+                    }}
+                  >
+                    Cancel
+                  </button>
+                )
+              }
+
+              <button type="submit" className={clsx(styles.submitInner)}>Submit{
+                reply.reply ? " Reply" : ""
+              } Comments</button>
             </div>
           </div>
         </form>
@@ -82,7 +247,18 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                       </time>
                     </span>
                   </div>
-                  <div className="flex">Reply</div>
+                  <button className="flex" onClick={() => {
+                    setReply({
+                      ...reply,
+                      reply: 1,
+                      id: item.id
+                    })
+                    // 平滑移动到评论框
+                    const comment = document.querySelector(`#comment`)
+                    comment?.scrollIntoView({
+                      behavior: 'smooth'
+                    })
+                  }}>Reply</button>
                 </div>
 
                 <div className={clsx(styles.content)}>
@@ -91,48 +267,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                   />
                 </div>
 
-                {
-                  item.children && (
-                    <div className={clsx(styles.replyContainer)}>
-                      <div className="relative">
-                        <div className={clsx(styles.tlLine)} />
-                        {
-                          item.children && item.children.map((item: any, index: Number) => {
-                            return (
-                              <div className={clsx(styles.replyBox)}>
-                                <div className={clsx(styles.replyAuthorAvatar)}>
-                                  <a href={item?.url} className={clsx(styles.authorAvatar)}>
-                                    <img src={item.mail ? mailAvatar(item.mail) : "https://cravatar.cn/avatar/"} alt={item.author} width={30} height={30} />
-                                  </a>
-                                </div>
-                                <div className={clsx(styles.headerBox)}>
-                                  <div className={clsx(styles.replyHeader, styles.header)}>
-                                    <div className={clsx(styles.author)}>
-                                      <a rel="nofollow noopener noreferrer" target="_blank"
-                                        href={item?.url} className="flex items-center">
-                                        <span className="link-primary font-semibold">{item.author}</span>
-                                      </a>
-                                      <span className="link-secondary ml-2">
-                                        <time className="whitespace-nowrap">
-                                          {item.created.split('T')[0]}
-                                        </time>
-                                      </span>
-                                    </div>
-                                  </div>
-                                  <div className={clsx(styles.content)}>
-                                    <Markdown
-                                      source={item.text}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )
-                          })
-                        }
-                      </div>
-                    </div>
-                  )
-                }
+                <Children children={item.children} />
 
               </div>
             )
