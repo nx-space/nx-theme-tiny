@@ -20,10 +20,12 @@ specifiers:
   less: 4.1.3
   lint-staged: ^13.0.3
   lodash: 4.17.21
+  lodash-es: ^4.17.21
   medium-zoom: 1.0.6
   mobx: 6.6.1
   mobx-react-lite: 3.4.0
   next: 12.2.4
+  next-seo: ^5.5.0
   ohmyfetch: 0.4.18
   postcss: 8.4.16
   postcss-nesting: 10.1.10
@@ -49,10 +51,12 @@ dependencies:
   clsx: 1.2.1
   framer-motion: 7.0.0_biqbaboplfbrettd7655fr4n2y
   lodash: 4.17.21
+  lodash-es: 4.17.21
   medium-zoom: 1.0.6
   mobx: 6.6.1
   mobx-react-lite: 3.4.0_m26jawr67gnusmh4egzqtnhxru
   next: 12.2.4_biqbaboplfbrettd7655fr4n2y
+  next-seo: 5.5.0_vyccxgqxcnj5vudpssiumaxlme
   ohmyfetch: 0.4.18
   qier-progress: 1.0.4
   react: 18.2.0
@@ -2793,6 +2797,10 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
+
   /lodash.castarray/4.4.0:
     resolution: {integrity: sha512-aVx8ztPv7/2ULbArGJ2Y42bG1mEQ5mGjpdvrbJcJFU3TbYybe+QlLS4pst9zV52ymy2in1KpFPiZnAOATxD4+Q==}
     dev: true
@@ -3367,6 +3375,23 @@ packages:
       - supports-color
     dev: true
     optional: true
+
+  /next-seo/5.5.0_vyccxgqxcnj5vudpssiumaxlme:
+    resolution: {integrity: sha512-5ouBHFtx8YrSDW44lj0qIEQ+oMcz6stgoITB+SqHUZbhgizoJsyLmq73gJ0lxtEKpcN8vG2QgRIJfdb8OAPChw==}
+    peerDependencies:
+      next: ^8.1.1-canary.54 || >=9.0.0
+      react: '>=16.0.0'
+      react-dom: '>=16.0.0'
+    peerDependenciesMeta:
+      next:
+        optional: true
+      react:
+        optional: true
+    dependencies:
+      next: 12.2.4_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
 
   /next/12.2.4_biqbaboplfbrettd7655fr4n2y:
     resolution: {integrity: sha512-b1xlxEozmAWokAXzXsi5vlmU/IfJcFNIJA8dpU5UdkFbyDPio8wwb8mAQ/Y7rGtfTgG/t/u49BiyEA+xAgFvow==}

@@ -3,13 +3,15 @@
  * @author: Wibus
  * @Date: 2022-08-08 16:34:30
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 11:32:48
+ * @LastEditTime: 2022-08-09 14:41:38
  * Coding With IU
  */
 
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
+import { title } from "process";
 import Markdown from "../../components/Markdown";
+import { Seo } from "../../components/others/SEO";
 import { Comments } from "../../components/widgets/Comments";
 import { apiClient } from "../../utils/request.util";
 
@@ -25,6 +27,13 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 const Page: NextPage = (props: any) => {
   return (
     <>
+      <Seo
+        title={props.data.title}
+        openGraph={{ type: 'article' }}
+        description={
+          props.data.text.substring(0, 200)
+        }
+      />
       <Head>
         <title>{props.data.title}</title>
       </Head>

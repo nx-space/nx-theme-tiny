@@ -3,13 +3,14 @@
  * @author: Wibus
  * @Date: 2022-08-09 11:35:08
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 12:23:51
+ * @LastEditTime: 2022-08-09 14:39:47
  * Coding With IU
  */
 
 
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
+import { SEO } from "../../../components/others/SEO";
 import { apiClient } from "../../../utils/request.util";
 
 
@@ -27,6 +28,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 const Tag: NextPage = (props: any) => {
   return (
     <>
+      <SEO 
+        title={`${props.tag} 标签下的文章`}
+      />
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">

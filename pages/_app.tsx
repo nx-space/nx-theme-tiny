@@ -50,15 +50,17 @@ function App({ initialData, Component, pageProps }) {
   appState.aggregate = initialData
 
   return (
-    <div className='max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0'>
-      <div className='flex flex-col justify-between h-screen"'>
-        <Header />
-        <main className='mb-auto'>
-          <Component {...pageProps} />
-        </main>
-        <Footer />
+    <>
+      <div className='max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0'>
+        <div className='flex flex-col justify-between h-screen"'>
+          <Header />
+          <main className='mb-auto'>
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
       </div>
-    </div>
+    </>
   )
 }
 
@@ -68,56 +70,56 @@ App.getInitialProps = async (props: AppContext) => {
   const request = ctx.req
   // if (request && isServerSide()) {
 
-    // 在原有的请求器基础上继续配置请求器
-    let ip =
-      ((request?.headers['x-forwarded-for'] ||
-        request?.headers['X-Forwarded-For'] ||
-        request?.headers['X-Real-IP'] ||
-        request?.headers['x-real-ip'] ||
-        request?.connection.remoteAddress ||
-        request?.socket.remoteAddress) as string) || undefined
-    if (ip && ip.split(',').length > 0) {
-      ip = ip.split(',')[0]
-    }
-    if (ip) {
-      appState.request.ip = ip
-      appState.request.userAgent = request?.headers['user-agent'] || ''
-    }
+  // 在原有的请求器基础上继续配置请求器
+  let ip =
+    ((request?.headers['x-forwarded-for'] ||
+      request?.headers['X-Forwarded-For'] ||
+      request?.headers['X-Real-IP'] ||
+      request?.headers['x-real-ip'] ||
+      request?.connection.remoteAddress ||
+      request?.socket.remoteAddress) as string) || undefined
+  if (ip && ip.split(',').length > 0) {
+    ip = ip.split(',')[0]
+  }
+  if (ip) {
+    appState.request.ip = ip
+    appState.request.userAgent = request?.headers['user-agent'] || ''
+  }
 
-    // 获取数据
-    // eslint-disable-next-line no-inner-declarations
-    async function getHeadinitialData() {
-      const aggregatedData = await apiClient("/aggregate")
-      const aggregatedTop = await apiClient("/aggregate/top")
-      const res = {
-        aggregatedData,
-        aggregatedTop,
+  // 获取数据
+  // eslint-disable-next-line no-inner-declarations
+  async function getHeadinitialData() {
+    const aggregatedData = await apiClient("/aggregate")
+    const aggregatedTop = await apiClient("/aggregate/top")
+    const res = {
+      aggregatedData,
+      aggregatedTop,
+    }
+    return res
+  }
+  const initialData = globalThis.data ?? (await getHeadinitialData())
+  const appProps = await (async () => {
+    try {
+      return await NextApp.getInitialProps(props)
+    } catch (error) {
+
+      if (!initialData) {
+        throw error
       }
-      return res
-    }
-    const initialData = globalThis.data ?? (await getHeadinitialData())
-    const appProps = await (async () => {
-      try {
-        return await NextApp.getInitialProps(props)
-      } catch (error) {
 
-        if (!initialData) {
-          throw error
-        }
-
-        if (ctx.res) {
-          ctx.res.statusCode = 466
-          ctx.res.statusMessage = '服务器错误, 无数据'
-        }
-        return null
+      if (ctx.res) {
+        ctx.res.statusCode = 466
+        ctx.res.statusMessage = '服务器错误, 无数据'
       }
-    })()
-
-
-    return {
-      ...appProps,
-      initialData,
+      return null
     }
+  })()
+
+
+  return {
+    ...appProps,
+    initialData,
+  }
 
 }
 
