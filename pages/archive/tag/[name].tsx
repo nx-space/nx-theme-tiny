@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-09 11:35:08
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 12:07:01
+ * @LastEditTime: 2022-08-09 12:23:51
  * Coding With IU
  */
 
@@ -18,6 +18,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const data = await apiClient(`/categories/${name}?tag=true`);
   return {
     props: {
+      tag: data.tag,
       data: data.data,
     },
   };
@@ -29,7 +30,7 @@ const Tag: NextPage = (props: any) => {
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {props.data.tag}
+            {props.tag}
           </h1>
           <p className="text-base leading-6 text-gray-500 dark:text-gray-400">
             共有 {props.data?.length} 篇文章

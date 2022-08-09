@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 15:24:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 11:33:09
+ * @LastEditTime: 2022-08-09 12:04:55
  * Coding With IU
  */
 
@@ -87,8 +87,8 @@ const Post: NextPage = (props: any) => {
                         {aggregateSnapshot.aggregatedData.user.name}
                       </dd>
                       <p className="text-gray-500 dark:text-gray-400">
-                      {aggregateSnapshot.aggregatedData.user.introduce}
-                    </p>
+                        {aggregateSnapshot.aggregatedData.user.introduce}
+                      </p>
                     </dl>
                   </li>
                 </ul>
@@ -96,7 +96,7 @@ const Post: NextPage = (props: any) => {
             </dl>
             <div className="divide-y divide-gray-200 dark:divide-gray-700 xl:pb-0 xl:col-span-3 xl:row-span-2">
               <div className="pt-10 pb-8 prose dark:prose-invert max-w-none">
-                <Markdown 
+                <Markdown
                   source={props.data.text}
                   images={props.data.images}
                 />
@@ -106,24 +106,28 @@ const Post: NextPage = (props: any) => {
                   type="Post"
                   path={props.data.path}
                   id={props.data.id}
-                  />
+                />
               </div>
             </div>
             <footer>
               <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
                 <div className="py-4 xl:py-8">
                   <h2 className="mb-3 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Category</h2>
-                  <a className="t-4 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-bold">
-                    {props.data.category.name}
-                  </a>
+                  <Link href={`/archive/category/${props.data.category.slug}`}>
+                    <a className="t-4 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-bold">
+                      {props.data.category.name}
+                    </a>
+                  </Link>
                 </div>
                 <div className="py-4 xl:py-8">
                   <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Tags</h2>
                   <div className="flex flex-wrap">
                     {props.data.tags.map((tag: string) => (
-                      <a className="mt-3 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-extralight">
+                      <Link href={`/archive/tag/${tag}`}>
+                        <a className="mt-3 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-extralight">
                         {tag}
                       </a>
+                      </Link>
                     ))}
                   </div>
                   <div className="pt-4 xl:pt-8">

@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 14:59:01
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 16:15:34
+ * @LastEditTime: 2022-08-09 12:07:20
  * Coding With IU
  */
 
@@ -67,13 +67,17 @@ const Posts: NextPage = (props: any) => {
                         </Link>
                       </h2>
                       <div className='flex flex-wrap'>
-                        <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
-                          {item.category.name}
-                        </a>
-                        {item.tags.map((tag, index) => (
-                          <a grayaria-label="post's tag name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400' key={index}>
-                            {tag.name}
+                        <Link href={`/archive/categories/${item.category.slug}`}>
+                          <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
+                            {item.category.name}
                           </a>
+                        </Link>
+                        {item.tags.map((tag, index) => (
+                          <Link href={`/archive/tag/${tag.name}`} key={index}>
+                            <a grayaria-label="post's tag name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400' key={index}>
+                              {tag.name}
+                            </a>
+                          </Link>
                         ))}
                       </div>
                     </div>
