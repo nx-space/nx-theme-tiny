@@ -1,6 +1,6 @@
 {
   "name": "nx-tiny",
-  "version": "0.1.0",
+  "version": "0.1.0-alpha.0",
   "private": true,
   "scripts": {
     "prebuild": "rimraf .next",
