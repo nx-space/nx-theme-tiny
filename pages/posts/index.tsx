@@ -3,13 +3,14 @@
  * @author: Wibus
  * @Date: 2022-08-08 14:59:01
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 12:07:20
+ * @LastEditTime: 2022-08-09 14:34:34
  * Coding With IU
  */
 
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
 import { useSnapshot } from "valtio";
+import { SEO } from "../../components/others/SEO";
 import appState from "../../states/appState";
 import { apiClient } from "../../utils/request.util";
 
@@ -34,6 +35,8 @@ const Posts: NextPage = (props: any) => {
 
   return (
     <>
+      <SEO title="博文" />
+      
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">

@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 12:28:09
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 12:26:09
+ * @LastEditTime: 2022-08-09 14:54:02
  * Coding With IU
  */
 
@@ -69,16 +69,33 @@ export const Header: FC<any> = () => {
             isOpen ? "translate-x-0" : "translate-x-full",
             "fixed w-full h-full top-24 right-0 bg-gray-200 dark:bg-gray-800 opacity-95 z-10 transform ease-in-out duration-300"
           )}>
-
-            <button type="button" aria-label="toggle modal" className="fixed w-full h-full cursor-auto focus:outline-none">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="text-gray-900 dark:text-gray-100"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
-            </button>
-
-
             <nav className="fixed h-full mt-8">
               <div className="px-12 py-4">
-                <a className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100" href="/blog">Blog</a>
+                <Link href={`/posts`}>
+                  <a className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Posts</a>
+                </Link>
               </div>
+              <div className="px-12 py-4">
+                <Link href={`/archive`}>
+                  <a className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Archive</a>
+                </Link>
+              </div>
+              <div className="px-12 py-4">
+                <Link href={`/links`}>
+                  <a className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">Links</a>
+                </Link>
+              </div>
+              {
+                aggregateSnapshot?.aggregatedData.page_meta?.map((item: any) => {
+                  return (
+                    <div className="px-12 py-4">
+                      <Link href={`/${item.slug}`}>
+                        <a key={item.id} className="text-2xl font-bold tracking-widest text-gray-900 dark:text-gray-100">{item.title}</a>
+                      </Link>
+                    </div>
+                  )
+                })
+              }
             </nav>
           </div>
         </div>

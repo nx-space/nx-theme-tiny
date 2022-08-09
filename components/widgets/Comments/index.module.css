@@ -172,7 +172,7 @@
   border-end-start-radius: 0.375rem;
   border-top-width: 1px;
   padding-top: 0.5rem;
-  background-color: #f6f8fa;
+  /* background-color: #f6f8fa; */
 }
 
 .replyContainer :first-child>.tlLine {

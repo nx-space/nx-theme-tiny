@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 13:12:33
+ * @LastEditTime: 2022-08-09 14:43:40
  * Coding With IU
  */
 
@@ -49,7 +49,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
   const getComments = async (props?: number) => {
     return await apiClient(`/comments/ref/${id}?page=${props || 1}`).then(res => {
       setList(res);
-      console.log(res);
+      // console.log(res);
       return res
     })
   }
@@ -283,7 +283,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                       pagination: res.pagination
                     })
                     message.info(`加载成功`)
-                    console.log(res)
+                    // console.log(res)
                   }).catch((err) => {
                     message.error('加载失败')
                   })
