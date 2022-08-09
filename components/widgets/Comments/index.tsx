@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 12:52:20
+ * @LastEditTime: 2022-08-09 13:12:33
  * Coding With IU
  */
 
@@ -154,7 +154,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
         }}>
           <div className={clsx(styles["boxMain"])}>
             <div className="p-3 pb-4">
-              <input type="text" placeholder="Name" className="focus:outline-none" name="author"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="Name" className="focus:outline-none" name="author"
                 value={reply.author as any}
                 onChange={(e) => {
                   setReply({
@@ -163,7 +163,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                   })
                 }}
               />
-              <input type="text" placeholder="Mail" className="focus:outline-none"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="Mail" className="focus:outline-none"
                 name="mail"
                 value={reply.mail as any}
                 onChange={(e) => {
@@ -173,7 +173,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                   })
                 }}
               />
-              <input type="text" placeholder="Url (optional)" className="focus:outline-none" style={{ width: "400px" }}
+              <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Url (optional)" className="focus:outline-none"
                 name="url"
                 value={reply.url as any}
                 onChange={(e) => {

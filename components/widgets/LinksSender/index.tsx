@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-09 12:52:53
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 13:09:24
+ * @LastEditTime: 2022-08-09 13:11:29
  * Coding With IU
  */
 /*
@@ -81,7 +81,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
               <label className="mr-5 text-gray-700 dark:text-gray-300 font-semibold">
                 您的名字
               </label>
-              <input type="text" placeholder="Name" className="focus:outline-none" name="author"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="Name" className="focus:outline-none" name="author"
                 value={link.author as any}
                 onChange={(e) => {
                   setLink({
@@ -93,7 +93,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
               <label className="mr-5 text-gray-700 dark:text-gray-300 font-semibold">
                 您的邮箱
               </label>
-              <input type="text" placeholder="Mail" className="focus:outline-none"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="Mail" className="focus:outline-none"
                 name="mail"
                 value={link.mail as any}
                 onChange={(e) => {
@@ -107,7 +107,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
               <label className="mr-5 text-gray-700 dark:text-gray-300 font-semibold">
                 站点图标
               </label>
-              <input type="text" placeholder="avatar" className="focus:outline-none"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="avatar" className="focus:outline-none"
                 name="avatar"
                 value={link.avatar as any}
                 onChange={(e) => {
@@ -125,7 +125,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
               <label className="block text-gray-700 dark:text-gray-300 font-semibold">
                 站点名称
               </label>
-              <input type="text" placeholder="Name" className="focus:outline-none" style={{ width: "400px" }}
+              <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Name" className="focus:outline-none"
                 name="name"
                 value={link.name as any}
                 onChange={(e) => {
@@ -140,7 +140,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
               <label className="mr-5 text-gray-700 dark:text-gray-300 font-semibold">
                 站点地址
               </label>
-              <input type="text" placeholder="Url (optional)" className="focus:outline-none" style={{ width: "400px" }}
+              <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Url (optional)" className="focus:outline-none"
                 name="url"
                 value={link.url as any}
                 onChange={(e) => {
@@ -156,7 +156,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
                 <label className="mr-5 text-gray-700 dark:text-gray-300 font-semibold">
                   RSS 订阅地址
                 </label>
-                <input type="text" placeholder="Rss Link (optional)" className="focus:outline-none" style={{ width: "400px" }}
+                <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Rss Link (optional)" className="focus:outline-none"
                   name="rss"
                   value={link.rss as any}
                   onChange={(e) => {
@@ -172,7 +172,7 @@ export const LinksSender: FC<any> = ({ type, path, id }) => {
                 <label className="block text-gray-700 dark:text-gray-300 font-semibold">
                   RSS 订阅类型 (填写 atom 或 rss)
                 </label>
-                <input type="text" placeholder="Rss Type (optional)" className="focus:outline-none" style={{ width: "400px" }}
+                <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Rss Type (optional)" className="focus:outline-none"
                   name="rssType"
                   value={link.rssType as any}
                   onChange={(e) => {
