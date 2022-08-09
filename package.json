@@ -1,7 +1,19 @@
 {
-  "name": "nx-tiny",
-  "version": "0.1.0-alpha.0",
+  "name": "nx-theme-tiny",
+  "version": "0.1.0",
   "private": true,
+  "description": "A simple, clean, and minimalistic theme for NEXT.",
+  "author": "Wibus <https://iucky.cn>",
+  "license": "AGPLv3",
+  "repository": {
+    "directory": "nx-space/nx-theme-tiny",
+    "url": "https://github.com/nx-space/nx-theme-tiny"
+  },
+  "homepage": "https://github.com/nx-space/nx-theme-tiny#readme",
+  "issues": "https://github.com/nx-space/nx-theme-tiny/issues",
+  "engines": {
+    "node": ">=16"
+  },
   "scripts": {
     "prebuild": "rimraf .next",
     "predev": "rimraf .next",
@@ -9,8 +21,17 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "lint:eslint": "eslint --ext .ts,.tsx --ignore-path .gitignore . --fix"
+    "lint:eslint": "eslint --ext .ts,.tsx --ignore-path .gitignore . --fix",
+    "stylelint": "stylelint 'src/**/*.{css,scss}' --fix",
+    "prod:pm2": "cross-env NODE_ENV=production pm2 restart ecosystem.config.js",
+    "prod:stop": "pm2 stop ecosystem.config.js",
+    "prod:reload": "pm2 reload ecosystem.config.js"
   },
+  "browserslist": [
+    "chrome >=94",
+    "safari >=14",
+    "last 2 Firefox versions"
+  ],
   "pnpm": {
     "peerDependencyRules": {
       "ignoreMissing": [
@@ -65,11 +86,5 @@
     "rimraf": "^3.0.2",
     "tailwindcss": "3.1.8",
     "typescript": "4.7.4"
-  },
-  "browserslist": [
-    ">0.3%",
-    "not ie 11",
-    "not dead",
-    "not op_mini all"
-  ]
+  }
 }
