@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 12:28:09
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 20:34:25
+ * @LastEditTime: 2022-08-09 12:26:09
  * Coding With IU
  */
 
@@ -35,6 +35,17 @@ export const Header: FC<any> = () => {
       </div>
       <div className="flex items-center text-base leading-5">
         <div className="hidden sm:block">
+          <Link href={`/posts`}>
+            <a className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100" >Posts</a>
+          </Link>
+
+          <Link href={`/archive`}>
+            <a className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100" >Archive</a>
+          </Link>
+
+          <Link href={`/links`}>
+            <a className="p-1 font-medium text-gray-900 sm:p-4 dark:text-gray-100" >Links</a>
+          </Link>
           {
             aggregateSnapshot?.aggregatedData.page_meta?.map((item: any) => {
               return (

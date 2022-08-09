@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 11:58:05
+ * @LastEditTime: 2022-08-09 12:52:20
  * Coding With IU
  */
 
@@ -13,7 +13,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import { apiClient } from "../../../utils/request.util";
 import { mailAvatar } from "../../../utils/mail.util";
-import { useBeforeUnload, useMount } from "react-use";
+import { useMount } from "react-use";
 import Markdown from "../../Markdown";
 import { message } from "react-message-popup";
 import { isClientSide } from "../../../utils/ssr.util";
