@@ -3,11 +3,11 @@
  * @author: Wibus
  * @Date: 2022-08-07 21:55:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 14:30:31
+ * @LastEditTime: 2022-08-09 14:43:31
  * Coding With IU
  */
 
-import { proxy, subscribe } from "valtio";
+import { proxy } from "valtio";
 
 
 const appState = proxy({
@@ -16,10 +16,6 @@ const appState = proxy({
     userAgent: "",
   },
   aggregate: {},
-})
-
-subscribe(appState, (state) => {
-  console.log(appState)
 })
 
 export default appState
