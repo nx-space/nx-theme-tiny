@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 15:24:47
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 22:34:20
+ * @LastEditTime: 2022-08-09 11:33:09
  * Coding With IU
  */
 
@@ -103,7 +103,7 @@ const Post: NextPage = (props: any) => {
               </div>
               <div id="comment">
                 <Comments
-                  type="post"
+                  type="Post"
                   path={props.data.path}
                   id={props.data.id}
                   />

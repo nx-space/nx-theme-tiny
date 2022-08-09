@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 11:25:18
+ * @LastEditTime: 2022-08-09 11:32:26
  * Coding With IU
  */
 
@@ -20,7 +20,7 @@ import { isClientSide } from "../../../utils/ssr.util";
 
 interface ICommentsFC {
   // type 只能填写 post 或 page
-  type: 'post' | 'page';
+  type: 'Post' | 'Page';
   path: String
   id: String
 }
@@ -104,7 +104,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                         })
                       }}>Reply</button>
                     </div>
-                    <div className={clsx(styles.content)}>
+                    <div className={clsx(styles.content, "prose dark:prose-invert")}>
                       <Markdown
                         source={item.text}
                       />
@@ -137,7 +137,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
             "url": reply.url,
           }))
           // message.info(`/comments${reply.reply ? "/reply" : ""}/${reply.id}`)
-          await apiClient(`/comments${reply.reply ? "/reply" : ""}/${reply.id}`, {
+          await apiClient(`/comments${reply.reply ? "/reply" : ""}/${reply.id}?ref=${type}`, {
             method: "POST",
             body: JSON.stringify(reply)
           }).then(() => {
@@ -261,7 +261,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                   }}>Reply</button>
                 </div>
 
-                <div className={clsx(styles.content)}>
+                <div className={clsx(styles.content, "prose dark:prose-invert")}>
                   <Markdown
                     source={item.text}
                   />
