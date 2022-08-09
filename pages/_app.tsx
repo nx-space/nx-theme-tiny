@@ -53,7 +53,7 @@ function App({ initialData, Component, pageProps }) {
     <div className='max-w-3xl px-4 mx-auto sm:px-6 xl:max-w-5xl xl:px-0'>
       <div className='flex flex-col justify-between h-screen"'>
         <Header />
-        <main className='mb-auto'>
+        <main className='mb-auto min-h-screen'>
           <Component {...pageProps} />
         </main>
         <Footer />

@@ -45,9 +45,11 @@ const Home: NextPage = () => {
                             </Link>
                           </h2>
                           <div className='flex flex-wrap'>
-                            <a href="" aria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
-                              {item.category.name}
-                            </a>
+                            <Link href={`/archive/categories/${item.category.slug}`}>
+                              <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
+                                {item.category.name}
+                              </a>
+                            </Link>
                           </div>
                         </div>
                         <div className='prose text-gray-500 max-w-none dark:text-gray-400' />
