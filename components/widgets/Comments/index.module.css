@@ -208,6 +208,41 @@
   min-width: 0;
   width: 100%;
 }
+
 .replyHeader {
   padding: 0;
+}
+
+.more {
+  background-image: url(https://github.com/images/modules/pulls/progressive-disclosure-line.svg);
+  background-position: 50%;
+  background-repeat: repeat-x;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.moreBtn {
+  align-items: center;
+  display: flex;
+  -webkit-padding-start: 1.5rem;
+  -webkit-padding-end: 1.5rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  flex-direction: column;
+  font-size: .875rem;
+  line-height: 1.25rem;
+  padding-inline-end: 1.5rem;
+  padding-bottom: 0.5rem;
+  padding-inline-start: 1.5rem;
+  padding-top: 0.5rem;
+  color: #57606a;
+}
+
+.moreBtnInner {
+  font-weight: 600;
+  color: #0969da;
 }

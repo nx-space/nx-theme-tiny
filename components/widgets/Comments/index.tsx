@@ -3,17 +3,17 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 11:32:26
+ * @LastEditTime: 2022-08-09 11:58:05
  * Coding With IU
  */
 
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import styles from './index.module.css'
 import clsx from "clsx";
 import Link from "next/link";
 import { apiClient } from "../../../utils/request.util";
 import { mailAvatar } from "../../../utils/mail.util";
-import { useMount } from "react-use";
+import { useBeforeUnload, useMount } from "react-use";
 import Markdown from "../../Markdown";
 import { message } from "react-message-popup";
 import { isClientSide } from "../../../utils/ssr.util";
@@ -46,8 +46,8 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
     "reply": 0
   });
 
-  const getComments = async () => {
-    return await apiClient(`/comments/ref/${id}`).then(res => {
+  const getComments = async (props?: number) => {
+    return await apiClient(`/comments/ref/${id}?page=${props || 1}`).then(res => {
       setList(res);
       console.log(res);
       return res
@@ -63,6 +63,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
       "url": (JSON.parse(localStorage.getItem('guest-message') || '{}')).url,
     })
   })
+
 
   const Children = ({ children }) => {
     return (children.length) && (
@@ -272,6 +273,29 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
               </div>
             )
           })}
+          {
+            list && list.pagination.current_page !== list.pagination.total_page && (
+              <div className={clsx(styles.more)}>
+                <button className={clsx(styles.moreBtn)} onClick={() => {
+                  getComments(list.pagination.current_page + 1).then((res) => {
+                    setList({
+                      data: [...list.data, ...res.data],
+                      pagination: res.pagination
+                    })
+                    message.info(`加载成功`)
+                    console.log(res)
+                  }).catch((err) => {
+                    message.error('加载失败')
+                  })
+                }}>
+                  还有 {list.pagination.total_page - list.pagination.current_page} 页评论
+                  <span className={clsx(styles.moreBtnInner)}>
+                    加载更多
+                  </span>
+                </button>
+              </div>
+            )
+          }
         </div>
       </div>
     </div>
