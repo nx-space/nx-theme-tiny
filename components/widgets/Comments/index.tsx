@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 18:14:29
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 14:43:40
+ * @LastEditTime: 2022-08-10 19:33:47
  * Coding With IU
  */
 
@@ -173,7 +173,7 @@ export const Comments: FC<ICommentsFC> = ({ type, path, id }) => {
                   })
                 }}
               />
-              <input type="text" style={{backgroundColor: "inherit", width: "400px"}} placeholder="Url (optional)" className="focus:outline-none"
+              <input type="text" style={{backgroundColor: "inherit"}} placeholder="Url (optional)" className="focus:outline-none"
                 name="url"
                 value={reply.url as any}
                 onChange={(e) => {
