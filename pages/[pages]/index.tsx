@@ -3,13 +3,12 @@
  * @author: Wibus
  * @Date: 2022-08-08 16:34:30
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 14:41:38
+ * @LastEditTime: 2022-08-10 22:42:50
  * Coding With IU
  */
 
 import { GetServerSideProps, NextPage } from "next";
 import Head from "next/head";
-import { title } from "process";
 import Markdown from "../../components/Markdown";
 import { Seo } from "../../components/others/SEO";
 import { Comments } from "../../components/widgets/Comments";

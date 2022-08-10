@@ -12,6 +12,21 @@
 /.next/
 /out/
 
+# pwa
+sw.js
+sw.js.*
+workbox-*.js
+workbox-*.js.*
+pages/debug.tsx
+/temp
+
+pages/dev
+
+patch/dist
+tmp
+out
+release.zip
+
 # production
 /build
 

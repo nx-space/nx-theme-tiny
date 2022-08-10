@@ -4,12 +4,10 @@ import { Router } from 'next/router'
 import { useCallback, useEffect } from 'react'
 import { message } from 'react-message-popup'
 import QP from 'qier-progress'
-import { isClientSide, isServerSide } from '../utils/ssr.util'
 import { apiClient } from '../utils/request.util'
 import appState from '../states/appState'
 import NextApp from 'next/app'
 import { Header } from '../components/layouts/Header'
-import { useSnapshot } from 'valtio'
 import { Footer } from '../components/layouts/Footer'
 
 function App({ initialData, Component, pageProps }) {
