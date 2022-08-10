@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 14:59:01
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 14:34:34
+ * @LastEditTime: 2022-08-10 23:48:19
  * Coding With IU
  */
 
@@ -94,7 +94,7 @@ const Posts: NextPage = (props: any) => {
 
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <nav className="flex justify-between">
-            <Link href="/posts?page={props.data.pagination.currentPage - 1}">
+            <Link href={`/posts?page=${props.data.pagination.currentPage - 1}`}>
               <a>
                 <button className="cursor-auto disabled:opacity-50"
                   aria-label="Previous page"
