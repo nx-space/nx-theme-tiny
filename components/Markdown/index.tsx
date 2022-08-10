@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 16:01:35
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 20:36:14
+ * @LastEditTime: 2022-08-10 22:05:56
  * Coding With IU
  */
 
@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import rehypeKatex from 'rehype-katex'
 import gfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import images from '../../states/images.state'
 import { isClientSide } from '../../utils/ssr.util'
 import { CodeBlock } from './renderers/CodeBlock'
@@ -35,9 +36,13 @@ export const Markdown = (props: { source: string, [key: string]: any }) => {
       <ReactMarkdown
         remarkPlugins={[
           gfm,
-          rehypeKatex
+          rehypeKatex,
+        ]}
+        rehypePlugins={[
+          rehypeRaw,
         ]}
         components={isClientSide() && components || {}}
+        // render html
       >
         {props.source}
       </ReactMarkdown>
