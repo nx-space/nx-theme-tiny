@@ -1,3 +1,0 @@
-public/apple-icon-180.png filter=lfs diff=lfs merge=lfs -text
-public/manifest-icon-192.maskable.png filter=lfs diff=lfs merge=lfs -text
-public/manifest-icon-512.maskable.png filter=lfs diff=lfs merge=lfs -text
