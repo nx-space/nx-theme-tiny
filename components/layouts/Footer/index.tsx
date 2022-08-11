@@ -3,7 +3,7 @@
  * @author: Wibus
  * @Date: 2022-08-08 14:51:52
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-08 14:56:07
+ * @LastEditTime: 2022-08-11 23:03:25
  * Coding With IU
  */
 
@@ -27,7 +27,9 @@ export const Footer: FC = () => {
         <div className="mb-2 text-sm text-gray-500 dark:text-gray-400">
           {aggregateSnapshot.aggregatedData.sites.description}
         </div>
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400"></div>
+        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
+          Power By <strong><a href="https://nx.js.org">NEXT</a></strong>
+        </div>
       </div>
     </footer>
   )
