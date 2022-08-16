@@ -1,12 +1,11 @@
 /*
- * @FilePath: /nx-theme-tiny/pages/archive/tag/[name].tsx
+ * @FilePath: /nx-theme-tiny/pages/category/[name].tsx
  * @author: Wibus
- * @Date: 2022-08-09 11:35:08
+ * @Date: 2022-08-09 11:35:10
  * @LastEditors: Wibus
- * @LastEditTime: 2022-08-09 14:39:47
+ * @LastEditTime: 2022-08-16 19:04:22
  * Coding With IU
  */
-
 
 import { GetServerSideProps, NextPage } from "next";
 import Link from "next/link";
@@ -16,33 +15,30 @@ import { apiClient } from "../../../utils/request.util";
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const { name } = ctx.query;
-  const data = await apiClient(`/categories/${name}?tag=true`);
+  const data = await apiClient(`/categories/${name}?tag=false`);
   return {
     props: {
-      tag: data.tag,
       data: data.data,
     },
   };
 }
 
-const Tag: NextPage = (props: any) => {
+const Category: NextPage = (props: any) => {
   return (
     <>
-      <SEO 
-        title={`${props.tag} 标签下的文章`}
-      />
+      <SEO title={`${props.data.name} 分类下的文章`} />
       <div className="divide-y">
         <div className="pt-6 pb-8 space-y-2 md:space-y-5">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {props.tag}
+            {props.data.name}
           </h1>
           <p className="text-base leading-6 text-gray-500 dark:text-gray-400">
-            共有 {props.data?.length} 篇文章
+            共有 {props.data.children?.length} 篇文章
           </p>
         </div>
 
         <ul>
-          {props.data?.map((item) => (
+          {props.data.children.map((item) => (
             <li key={item.id} className="py-4">
               <article className="space-y-2 xl:grid xl:grid-cols-4 xl:space-y-0 xl:items-baseline">
                 <dl>
@@ -64,12 +60,18 @@ const Tag: NextPage = (props: any) => {
                         </Link>
                       </h2>
                       <div className='flex flex-wrap'>
-                        <Link href={`/archive/categories/${item.category.slug}`}>
+                        <Link href={`/category/${item.category.slug}`}>
                           <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
                             {item.category.name}
                           </a>
                         </Link>
-
+                        {item.tags.map((tag, index) => (
+                          <Link href={`/tag/${tag.name}`} key={index}>
+                          <a grayaria-label="post's tag name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400' key={index}>
+                            {tag.name}
+                          </a>
+                        </Link>
+                        ))}
                       </div>
                     </div>
                     <div className='prose text-gray-500 max-w-none dark:text-gray-400' />
@@ -86,4 +88,4 @@ const Tag: NextPage = (props: any) => {
   )
 }
 
-export default Tag;
+export default Category;

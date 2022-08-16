@@ -70,13 +70,13 @@ const Posts: NextPage = (props: any) => {
                         </Link>
                       </h2>
                       <div className='flex flex-wrap'>
-                        <Link href={`/archive/categories/${item.category.slug}`}>
+                        <Link href={`/category/${item.category.slug}`}>
                           <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
                             {item.category.name}
                           </a>
                         </Link>
                         {item.tags.map((tag, index) => (
-                          <Link href={`/archive/tag/${tag.name}`} key={index}>
+                          <Link href={`/tag/${tag.name}`} key={index}>
                             <a grayaria-label="post's tag name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400' key={index}>
                               {tag.name}
                             </a>

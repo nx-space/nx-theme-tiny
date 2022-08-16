@@ -130,7 +130,7 @@ const Post: NextPage = (props: any) => {
                 <div className="text-sm font-medium leading-5 divide-gray-200 xl:divide-y dark:divide-gray-700 xl:col-start-1 xl:row-start-2">
                   <div className="py-4 xl:py-8">
                     <h2 className="mb-3 text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Category</h2>
-                    <Link href={`/archive/category/${props.data.category.slug}`}>
+                    <Link href={`/category/${props.data.category.slug}`}>
                       <a className="t-4 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-bold">
                         {props.data.category.name}
                       </a>
@@ -140,7 +140,7 @@ const Post: NextPage = (props: any) => {
                     <h2 className="text-xs tracking-wide text-gray-500 uppercase dark:text-gray-400">Tags</h2>
                     <div className="flex flex-wrap">
                       {props.data.tags.map((tag: string) => (
-                        <Link href={`/archive/tag/${tag}`}>
+                        <Link href={`/tag/${tag}`}>
                           <a className="mt-3 mr-3 text-sm uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400 font-extralight">
                             {tag}
                           </a>

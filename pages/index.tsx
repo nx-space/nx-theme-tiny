@@ -52,7 +52,7 @@ const Home: NextPage = () => {
                               </Link>
                             </h2>
                             <div className='flex flex-wrap'>
-                              <Link href={`/archive/categories/${item.category.slug}`}>
+                              <Link href={`/category/${item.category.slug}`}>
                                 <a grayaria-label="post's category name" className='mr-3 text-sm font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400'>
                                   {item.category.name}
                                 </a>

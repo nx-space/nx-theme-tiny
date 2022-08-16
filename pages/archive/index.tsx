@@ -41,12 +41,12 @@ const Archive: NextPage = (props: any) => {
             props.categories.map((item: any, index: number) => {
               return (
                 <div className="mt-2 mb-2 mr-5" key={index}>
-                  <Link href={`/archive/category/${item.slug}`}>
+                  <Link href={`/category/${item.slug}`}>
                     <a className="mr-3 text-xl font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
                       {item.name}
                     </a>
                   </Link>
-                  <Link href={`/archive/category/${item.slug}`}>
+                  <Link href={`/category/${item.slug}`}>
                     <a className="-ml-2 text-xl font-semibold text-gray-600 uppercase dark:text-gray-300">
                       ({item.count})
                     </a>
@@ -70,12 +70,12 @@ const Archive: NextPage = (props: any) => {
             props.tags.map((item: any, index: number) => {
               return (
                 <div className="mt-2 mb-2 mr-5" key={index}>
-                  <Link href={`/archive/tag/${item.name}`}>
+                  <Link href={`/tag/${item.name}`}>
                     <a className="mr-3 text-xl font-medium uppercase text-gray-500 hover:text-gray-600 dark:hover:text-gray-400">
                       {item.name}
                     </a>
                   </Link>
-                  <Link href={`/archive/tag/${item.name}`}>
+                  <Link href={`/tag/${item.name}`}>
                     <a className="-ml-2 text-xl font-semibold text-gray-600 uppercase dark:text-gray-300">
                       ({item.count})
                     </a>
