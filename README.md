@@ -1,4 +1,4 @@
-# NEXT Theme -- Tiny 
+# Mog Theme -- Tiny 
 > A simple, clean, and minimalistic theme for NEXT.
 >
 > 一个简单、纯净、最小化的主题，适用于 NEXT
@@ -24,6 +24,6 @@ pnpm start
 
 ## Author
 
-nx-space © Wibus, Released under the AGPL-3.0 License. Created on 2022-08-07
+MogLand © Wibus, Released under the AGPL-3.0 License. Created on 2022-08-07
 
 > [Personal Website](http://iucky.cn/) · [Blog](https://blog.iucky.cn/) · GitHub [@wibus-wee](https://github.com/wibus-wee/) · Telegram [@wibus✪](https://t.me/wibus_wee)
