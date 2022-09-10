@@ -1,7 +1,7 @@
 # Mog Theme -- Tiny 
-> A simple, clean, and minimalistic theme for NEXT.
+> A simple, clean, and minimalistic theme for MogLand.
 >
-> 一个简单、纯净、最小化的主题，适用于 NEXT
+> 一个简单、纯净、最小化的主题，适用于 Mog
 
 <img src="https://img.shields.io/github/package-json/v/nx-space/nx-theme-tiny" referrerpolicy="no-referrer" alt="version"> <a href="https://wakatime.com/badge/user/5c293fcd-9bec-4609-946b-c06b5fbf192c/project/94b4da17-cf29-4d6b-ba70-3bf2d352622e"><img src="https://wakatime.com/badge/user/5c293fcd-9bec-4609-946b-c06b5fbf192c/project/94b4da17-cf29-4d6b-ba70-3bf2d352622e.svg" alt="wakatime"></a>
 
@@ -9,7 +9,7 @@
 
 ## Usage
 
-此项目依赖 NEXT Core，详情请见 [Documentation 文档](//nx.js.org)
+此项目依赖 Mog Core，详情请见 [Documentation 文档](//mog.js.org)
 
 ```bash
 pnpm i
