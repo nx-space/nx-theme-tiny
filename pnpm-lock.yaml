@@ -4,7 +4,7 @@ specifiers:
   '@icon-park/react': 1.4.2
   '@innei-util/eslint-config-react-ts': 0.8.2
   '@innei/prettier': 0.9.4
-  '@tailwindcss/typography': 0.5.7
+  '@tailwindcss/typography': 0.5.16
   '@types/lodash': 4.14.183
   '@types/node': 18.6.4
   '@types/react': 18.0.21
@@ -80,7 +80,7 @@ dependencies:
 devDependencies:
   '@innei-util/eslint-config-react-ts': 0.8.2_4rv7y5c6xz3vfxwhbrcxxi73bq
   '@innei/prettier': 0.9.4
-  '@tailwindcss/typography': 0.5.7_tailwindcss@3.1.8
+  '@tailwindcss/typography': 0.5.16_tailwindcss@3.1.8
   '@types/lodash': 4.14.183
   '@types/node': 18.6.4
   '@types/react': 18.0.21
@@ -1701,10 +1701,10 @@ packages:
     dependencies:
       tslib: 2.4.0
 
-  /@tailwindcss/typography/0.5.7_tailwindcss@3.1.8:
-    resolution: {integrity: sha512-JTTSTrgZfp6Ki4svhPA4mkd9nmQ/j9EfE7SbHJ1cLtthKkpW2OxsFXzSmxbhYbEkfNIyAyhle5p4SYyKRbz/jg==}
+  /@tailwindcss/typography/0.5.16_tailwindcss@3.1.8:
+    resolution: {integrity: sha512-0wDLwCVF5V3x3b1SGXPCDcdsbDHMBe+lkFzBRaHeLvNi+nrrnZ1lA18u+OTWO8iSWU2GxUOCvlXtDuqftc1oiA==}
     peerDependencies:
-      tailwindcss: '>=3.0.0 || insiders'
+      tailwindcss: '>=3.0.0 || insiders || >=4.0.0-alpha.20 || >=4.0.0-beta.1'
     dependencies:
       lodash.castarray: 4.4.0
       lodash.isplainobject: 4.0.6
